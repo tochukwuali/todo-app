@@ -1,10 +1,9 @@
 import React from 'react';
-import Footer from './components/Footer'
 import Header from './components/Header'
-import MainContent from './components/MainContent'
-import TodoItem from './components/TodoItem'
+import Todos from './components/Todos'
+
 import todosData from './todosData'
-// import logo from './logo.svg';
+import AddTodo from './components/AddTodo';
 // import './App.css';
 
 class App extends React.Component {
@@ -13,10 +12,10 @@ class App extends React.Component {
         this.state = {
             todos: todosData
         }
-        this.handleChange = this.handleChange.bind(this)
+       // this.handleChange = this.handleChange.bind(this)
     }
  
-    handleChange(id) {
+    handleChange = (id) => {
        this.setState(prevState => {
            const updatedTodos = prevState.todos.map(todo => {
                 if (id === todo.id) {
@@ -24,24 +23,20 @@ class App extends React.Component {
                 }
                 return todo
            }) 
-           return{
+           return {
                todos: updatedTodos
            }
        })
     }
 
-    render() {
-        const todoComponents = this.state.todos.map((item) => { 
-            return <TodoItem key={item.id} todos={item} handleChange = {this.handleChange}/>
-        })
+    render() {       
             return (
                 <div>
                     <Header />
-                    <MainContent />
+                    <AddTodo />
                     <div className="todo-list">
-                        {todoComponents}
+                        <Todos todos = {this.state.todos} handleChange = {this.handleChange} />
                     </div>
-                    {/* <Footer /> */}
                 </div>
         );
     }
