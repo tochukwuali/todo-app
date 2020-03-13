@@ -6,7 +6,9 @@ export class Todos extends Component {
     render() {
         
       return this.props.todos.map((item) => {
-           return <TodoItem key = {item.id} todos = {item} handleChange = {this.props.handleChange}/>
+           return <TodoItem key = {item.id} todos = {item} 
+           handleChange = {this.props.handleChange} 
+           delTodo = {this.props.delTodo} />
         })
     }
 }

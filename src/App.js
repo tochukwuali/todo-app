@@ -9,19 +9,14 @@ class App extends React.Component {
     constructor() {
         super()
         this.state = {
-            todos: [
-                // {
-                //     id: uuidv4(),
-                //     title: "",
-                //     completed: false
-                // }
-            ]
+            todos: []
         }
-       // this.handleChange = this.handleChange.bind(this)
+
     }
-// this handles the onChange property of the checkbox when it is clicked
- //this maps through the todos array where id is the same as the clicked todo, gets the value of the 'completed' property, toggles it 
- //it return the updated todo 
+    /**  This handles the onChange property of the checkbox when it is clicked
+         This maps through the todos array where id is the same as the clicked todo, gets the value of the 'completed' property 
+         and toggles it
+         It returns the updated todo */
     handleChange = (id) => {
        this.setState(prevState => {
            const updatedTodos = prevState.todos.map(todo => {
@@ -48,13 +43,23 @@ class App extends React.Component {
         console.log(title)
     }
 
+    delTodo = (id) => {
+        this.setState({
+            todos: [...this.state.todos.filter((todo)=>{
+                return todo.id !== id
+            })]
+        })
+    }
+
     render() {       
             return (
                 <div>
                     <Header />
                     <AddTodo addTodo = {this.addTodo}/>
                     <div className="todo-list">
-                        <Todos todos = {this.state.todos} handleChange = {this.handleChange} />
+                        <Todos todos = {this.state.todos} 
+                               handleChange = {this.handleChange} 
+                               delTodo = {this.delTodo} />
                     </div>
                 </div>
         );
