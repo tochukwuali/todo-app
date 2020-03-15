@@ -54,14 +54,16 @@ class AddTodo extends Component {
 }
 
 const submitBtn = {
-    borderRadius: '5px', 
+    borderRadius: '3px', 
     border: 'none', 
     padding: '5px',
     margin: '5px',
     color: 'whitesmoke',
     backgroundColor: '#333',
     textDecoration: 'none',
-    cursor: 'pointer'                    
+    cursor: 'pointer',
+    boxShadow: '1px 1px 4px #dadada',
+    fontFamily: 'sans-serif'                  
 }
 
 const inputStyle = {
@@ -69,7 +71,9 @@ const inputStyle = {
     alignItems: 'center', 
     padding: '5px' , 
     margin: '5px', 
-    borderRadius: '5px'
+    borderRadius: '3px',
+    boxSizing: 'border-box',
+    border: '1px solid #c2c2c2'
 }
 
 export default AddTodo

@@ -16,9 +16,6 @@ body {
   margin-bottom: 15px;                                                ;
   text-align: center;
   font-size: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center
 }
 
 .foot {
@@ -70,4 +67,9 @@ input[type=checkbox] {
 
 input[type=checkbox]:focus {
   outline: 0;
+}
+
+.about {
+  align-items: center;
+  text-align: center
 }

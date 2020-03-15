@@ -3,6 +3,8 @@ import Header from './components/Header'
 import Todos from './components/Todos'
 import {v4 as uuidv4} from 'uuid'
 import AddTodo from './components/AddTodo';
+import About from './components/pages/About';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 // import './App.css';
 
 class App extends React.Component {
@@ -40,7 +42,6 @@ class App extends React.Component {
         this.setState({
             todos: [...this.state.todos, newTodo]
         })
-        console.log(title)
     }
 
     delTodo = (id) => {
@@ -53,15 +54,23 @@ class App extends React.Component {
 
     render() {       
             return (
-                <div>
-                    <Header />
-                    <AddTodo addTodo = {this.addTodo}/>
-                    <div className="todo-list">
-                        <Todos todos = {this.state.todos} 
-                               handleChange = {this.handleChange} 
-                               delTodo = {this.delTodo} />
+                <Router>
+                    <div>
+                        <Header />                    
+                        <Route path = '/' exact render={props => (
+                            <React.Fragment>
+                                <AddTodo addTodo = {this.addTodo}/>
+                                <div className="todo-list">
+                                    <Todos todos = {this.state.todos} 
+                                        handleChange = {this.handleChange} 
+                                        delTodo = {this.delTodo} />
+                                </div>
+                            </React.Fragment>
+                        )}>
+                        </Route>
+                        <Route path = "/about" component = {About} /> 
                     </div>
-                </div>
+                </Router>
         );
     }
     
